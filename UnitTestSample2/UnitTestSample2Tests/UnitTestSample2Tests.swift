@@ -30,5 +30,19 @@ class UnitTestSample2Tests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
+    
+    func testSomething() {
+        let vc = ViewController()
+        
+        // 引数として渡す値
+        let arg = 1
 
+        // 期待する戻り値
+        let expected = 2
+
+        // 実際の戻り値
+        let actual = vc.doSomething(arg: arg)
+
+        XCTAssertEqual(actual, expected)
+    }
 }
