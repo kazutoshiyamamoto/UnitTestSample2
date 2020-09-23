@@ -8,14 +8,14 @@
 
 import Foundation
 
-class Sample {
+class ImplicitInput {
 
-    private let data: SampleData
+    private let data: Data
 
     init() {
         // 1 ~ 10 までのランダムな数字を使って SampleData クラスを生成する
         let random = Int(arc4random_uniform(10) + 1)
-        self.data = SampleData(value: random)
+        self.data = Data(value: random)
     }
 
     func reduce () -> Int {
@@ -24,7 +24,7 @@ class Sample {
     }
 }
 
-class SampleData {
+class Data {
 
     let value: Int
 
