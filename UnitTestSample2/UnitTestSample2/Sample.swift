@@ -47,3 +47,19 @@ class Data {
         return value * 2
     }
 }
+
+// 本番用のReadableRepositoryContractプロトコルに準拠したクラス
+class ReadableRepository: ReadableRepositoryContract {
+
+    private let data: Data
+
+    init(data: Data) {
+        self.data = data
+    }
+
+    // プロトコル準拠部分
+    // Data#double() に相当する
+    func read() -> Int {
+        return self.data.double()
+    }
+}
