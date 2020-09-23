@@ -16,17 +16,22 @@ protocol ReadableRepositoryContract {
 
 class ImplicitInput {
     
-    private let data: Data
+//    private let data: Data
     
-    init() {
-        // 1 ~ 10 までのランダムな数字を使って SampleData クラスを生成する
-        let random = Int(arc4random_uniform(10) + 1)
-        self.data = Data(value: random)
+    private let repository: ReadableRepositoryContract
+    
+    init(repository: ReadableRepositoryContract) {
+        self.repository = repository
+//        // 1 ~ 10 までのランダムな数字を使って SampleData クラスを生成する
+//        let random = Int(arc4random_uniform(10) + 1)
+//        self.data = Data(value: random)
     }
     
     func reduce () -> Int {
-        // Sampleクラス外の値を利用する
-        return self.data.double() - 1
+        return self.repository.read() - 1
+        
+//        // ImplicitInputクラス外の値を利用する
+//        return self.data.double() - 1
     }
 }
 
