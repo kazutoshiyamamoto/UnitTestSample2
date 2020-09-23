@@ -8,16 +8,22 @@
 
 import Foundation
 
+// 「クラス外から取得した値」（double()）に相当するProtocolを定義。
+protocol ReadableRepositoryContract {
+    // Data#double() に相当する
+    func read() -> Int
+}
+
 class ImplicitInput {
-
+    
     private let data: Data
-
+    
     init() {
         // 1 ~ 10 までのランダムな数字を使って SampleData クラスを生成する
         let random = Int(arc4random_uniform(10) + 1)
         self.data = Data(value: random)
     }
-
+    
     func reduce () -> Int {
         // Sampleクラス外の値を利用する
         return self.data.double() - 1
@@ -25,13 +31,13 @@ class ImplicitInput {
 }
 
 class Data {
-
+    
     let value: Int
-
+    
     init(value: Int) {
         self.value = value
     }
-
+    
     func double() -> Int {
         return value * 2
     }
