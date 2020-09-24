@@ -63,3 +63,24 @@ class ReadableRepositoryStub: ReadableRepositoryContract {
     }
 }
 
+class ImplicitInputTests: XCTestCase {
+    func testMultiplication() {
+        // ReadableRepositoryContract#read() = 4 の時、
+        let int = 4
+
+        // ImplicitInput#reduce() = 3 となる
+        let expected = 3
+
+        // - 1: スタブを作成
+        let repositoryStub = ReadableRepositoryStub(base: int)
+
+        // - 2: スタブを差し込む
+        let input = ImplicitInput(repository: repositoryStub)
+
+        // - 3: 内部でスタブが利用される
+        //      これにより、「ReadableRepositoryContract#read() = 4 の時」を再現できる
+        let actual = input.reduce()
+
+        XCTAssertEqual(actual, expected)
+    }
+}
