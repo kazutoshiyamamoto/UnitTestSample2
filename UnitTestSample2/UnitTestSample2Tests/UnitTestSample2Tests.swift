@@ -46,3 +46,20 @@ class UnitTestSample2Tests: XCTestCase {
         XCTAssertEqual(actual, expected)
     }
 }
+
+// スタブを定義
+class ReadableRepositoryStub: ReadableRepositoryContract {
+
+    private let base: Int
+
+    init(base: Int) {
+        self.base = base
+    }
+
+    // 偽物の振る舞いを行なっている箇所
+    func read() -> Int {
+        // init時に渡された値をそのまま返す
+        return self.base
+    }
+}
+
