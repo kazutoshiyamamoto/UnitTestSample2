@@ -15,12 +15,24 @@ protocol WritableRepositoryContract {
 
 class ImplicitOutput {
     
-    private let data = SampleData(value: nil)
+//    // 変更前
+//    private let data = SampleData(value: nil)
+    
+    // 変更後
+    private let repository: WritableRepositoryContract
+    
+    // 変更後に追加
+    init(writeVia repository: WritableRepositoryContract) {
+        self.repository = repository
+    }
     
     func write(int: Int) {
+//        // 変更前
+//        // クラス外へ変更を行っている
+//        self.data.value = int
         
-        // クラス外へ変更を行っている
-        self.data.value = int
+        // 変更後
+        self.repository.write(int: int)
     }
 }
 
