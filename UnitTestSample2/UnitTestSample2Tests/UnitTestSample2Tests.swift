@@ -99,3 +99,16 @@ class WritableRepositorySpy: WritableRepositoryContract {
         self.callArguments += [args]
     }
 }
+
+class ImplicitOutputTests: XCTestCase {
+    func testWrite() {
+        let int = 2
+        let expected = int
+
+        let spy = WritableRepositorySpy()
+        let output = ImplicitOutput(writeVia: spy)
+        output.write(int: int)
+
+        XCTAssertEqual(expected, spy.callArguments.first!)
+    }
+}
