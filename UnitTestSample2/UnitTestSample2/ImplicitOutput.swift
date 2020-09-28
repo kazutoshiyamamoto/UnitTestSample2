@@ -36,6 +36,21 @@ class ImplicitOutput {
     }
 }
 
+// 本番のWritableRepositoryContractプロトコルに準拠したクラス
+class WritableRepository: WritableRepositoryContract {
+
+    // 変更前にImplicitOutputクラスに実装していた定数
+    private let data: SampleData
+
+    init(data: SampleData) {
+        self.data = data
+    }
+
+    func write(int: Int) {
+        self.data.value = int
+    }
+}
+
 class SampleData {
     
     var value: Int?
