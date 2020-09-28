@@ -8,6 +8,11 @@
 
 import Foundation
 
+protocol WritableRepositoryContract {
+    // 「記録したいクラス外の値」に相当するProtocolを定義
+    func write(int: Int)
+}
+
 class ImplicitOutput {
     
     private let data = SampleData(value: nil)
