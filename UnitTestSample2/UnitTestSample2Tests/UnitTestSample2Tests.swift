@@ -84,3 +84,18 @@ class ImplicitInputTests: XCTestCase {
         XCTAssertEqual(actual, expected)
     }
 }
+
+// スパイを定義
+class WritableRepositorySpy: WritableRepositoryContract {
+
+    private(set) var callArguments: [Int] = []
+
+    func write(int: Int) {
+        // 呼び出しを記録
+        self.record(int)
+    }
+
+    private func record(_ args: Int) {
+        self.callArguments += [args]
+    }
+}
